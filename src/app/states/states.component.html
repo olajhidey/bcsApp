@@ -1,0 +1,61 @@
+<div class="h_bank">
+    <div class="row">
+        <div class="col-8">
+          <h3>States</h3>
+        </div>
+        <div class="col-4">
+          <p class="text-right">profile</p> 
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-3">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <div class="col-md-3">
+        <select name="" class="form-control" id="">
+          <option value="">Savings</option>
+ 
+        </select>
+      </div>
+      <div class="col-md-3">
+          <select name="" class="form-control" id="">
+              <option value="">Current</option>
+     
+            </select>
+      </div>
+      <div class="col-md-3">
+          <select name="" class="form-control input-sm" id="">
+              <option value="">Fixed</option>
+     
+            </select>
+      </div>
+    </div>
+    
+          <clr-datagrid [(clrDgSelected)]="selected">
+              <clr-dg-column>States</clr-dg-column>
+              <clr-dg-column>Bank</clr-dg-column>
+              <clr-dg-column>Account status</clr-dg-column>
+              <clr-dg-column>Balance</clr-dg-column>
+              <clr-dg-column>WHT</clr-dg-column>
+
+              <clr-dg-row *ngFor="let bank of banks" [clrDgItem]="bank">
+                  <clr-dg-cell>{{bank.state}}</clr-dg-cell>
+                  <clr-dg-cell>{{bank.bank}}</clr-dg-cell>
+                  <clr-dg-cell>{{bank.accountStatus}}</clr-dg-cell>
+                  <clr-dg-cell>{{bank.balance}}</clr-dg-cell>
+                  <clr-dg-cell>{{bank.wht}}</clr-dg-cell>
+              </clr-dg-row>
+
+              <clr-dg-footer>
+                  <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+                      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                      of {{pagination.totalItems}} users
+                  </clr-dg-pagination>
+              </clr-dg-footer>
+              </clr-datagrid>
+    
+
+</div>

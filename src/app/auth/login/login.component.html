@@ -1,0 +1,39 @@
+<div class="bg-body">
+  <div class="container" id="container">
+
+    <img src="assets/img/logo.png" width="50px" alt="company logo">
+
+    <div class="form">
+     
+        <div class="card" class="pl-4 pr-4">
+
+          <div class="card-body">
+
+            <br>
+            <div class="form-group">
+                <label for="language">Select language</label> &nbsp; &nbsp;
+                <select name="language" id="language">
+                  <option value="English">English</option>
+                </select>
+            </div><br><br>
+            
+          <div class="form-group">
+            <input type="text" [(ngModel)] = "username" class="form-control" placeholder="Username">
+          </div>
+
+          <div class="form-group">
+            <input type="password" [(ngModel)] = "password" class="form-control" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-success btn-block" (click)="loginIntoAccount()">Sign in</button>
+          </div>
+
+          <p class="text-center"><a href="" style="color: black"> <i>Forgot password</i> </a></p>
+          </div>
+
+        </div>
+    </div>
+    
+  </div>
+</div>

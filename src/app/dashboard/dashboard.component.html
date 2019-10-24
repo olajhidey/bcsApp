@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-2" id="sidebar">
+
+        <div class="c_logo">
+         <a routerLink="/dashboard"> <img src="assets/img/logo.png" alt="company logo"></a>
+        </div>
+
+        <div class="c_features">
+          <hr>
+          <div class="link" *ngFor="let link of links">
+            <a routerLink="{{link.path}}">{{ link.name }}</a>
+          </div>
+          <hr>
+          </div>
+         
+
+      </div>
+      <div class="col-10" id="main">
+        <div class="container">
+
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
