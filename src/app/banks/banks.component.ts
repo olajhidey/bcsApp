@@ -8,56 +8,53 @@ import { DataService } from "../service/data.service";
 })
 export class BanksComponent implements OnInit {
   selected: any[] = [];
-  banks: any = [
-    { id: 1, name: "UBA", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    { id: 1, name: "FCMB", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    { id: 1, name: "FIRST", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    { id: 1, name: "Zenith", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    {
-      id: 1,
-      name: "Keystone",
-      actual_wth: 1000,
-      exp_wth: 2000,
-      customer: 10000
-    },
-    { id: 1, name: "Access", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    { id: 1, name: "Union", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
+  banks: any[] = [];
 
-    {
-      id: 1,
-      name: "Fidelity",
-      actual_wth: 1000,
-      exp_wth: 2000,
-      customer: 10000
-    },
-    { id: 1, name: "Wema", actual_wth: 1000, exp_wth: 2000, customer: 10000 },
-    {
-      id: 1,
-      name: "Ecobank",
-      actual_wth: 1000,
-      exp_wth: 2000,
-      customer: 10000
-    },
-
-    {
-      id: 1,
-      name: "Stanbic",
-      actual_wth: 1000,
-      exp_wth: 2000,
-      customer: 10000
-    },
-    { id: 1, name: "Diamond", actual_wth: 1000, exp_wth: 2000, customer: 10000 }
-  ];
   constructor(private _data: DataService) {}
 
   ngOnInit() {
-    // this.loadData();
+    this.loadData();
   }
 
   loadData() {
     this._data.getData().subscribe(res => {
-      this.banks = res;
-      console.log(res);
+      // this.banks = this.loadDat(res);
+
+      this.loadDat(res);
+      console.log(this.banks);
     });
+  }
+
+  loadDat(res: any[]): any {
+    var banks = {};
+
+    var result = res.reduce(function(r, o) {
+      var key = o.bank;
+      var i = 0;
+
+      console.log("=======key===== " + key);
+
+      if (!banks[key]) {
+        banks[key] = {
+          Bank: key,
+          code: 112,
+          wht: 0,
+          num: i + 1,
+          interestAmount: 0,
+          balance: 0
+        };
+
+        r.push(banks[key]);
+      } else {
+        banks[key].num += i;
+        banks[key].wht += parseFloat(o.wht);
+        banks[key].interestAmount += parseFloat(o.interestAmount);
+        banks[key].balance += parseFloat(o.balance);
+      }
+
+      return r;
+    }, []);
+
+    this.banks = result;
   }
 }

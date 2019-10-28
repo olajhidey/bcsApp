@@ -80,8 +80,8 @@ export class HomeComponent implements OnInit {
   }
 
   loadChart3() {
-    this.pieChartLabels = ["Sales Q1", "Sales Q2", "Sales Q3", "Sales Q4"];
-    this.pieChartData = [120, 150, 180, 90];
+    this.pieChartLabels = ["Individual", "Corporate", "Others"];
+    this.pieChartData = [120, 150, 180];
     this.pieChartType = "pie";
   }
 
